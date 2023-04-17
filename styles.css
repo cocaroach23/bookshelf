@@ -4,19 +4,42 @@
     
 }
 
+.add-modal{
+    background: rgba(0, 0, 0, 0.119);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 input{
     display: flex;
     margin: auto;
-    width: 250px;
+    width: 200px;
 }
 
 .input_items{
-    max-width: 300px;
+    /*max-width: 500px;*/
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 30px;
     margin-bottom: 80px;
+    background-color: white;
+    padding: 100px;
+    gap: 25px;
+}
+
+.input_item{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .input_text{

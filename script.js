@@ -33,6 +33,26 @@ const books = [
     }
     ]
 
+    const addModal = document.getElementById("add-modal")
+    const closeModalButt = document.getElementById("close-modal-butt")
+    const openModalButt = document.getElementById("open-modal-butt")
+
+    function saveToLocalStorage() {                       // сохраняем в локальное хранилище браузера 
+      const booksJson = JSON.stringify(books)
+      localStorage.setItem('books', booksJson)
+    }
+
+    function closeModal(){
+      addModal.style.display = "none"                     // в данной функции при закрывании окна, добавляем в сам div add-modal в стили add_modal значение none, тем самым закрываем модальное окно
+    }
+
+    function openModal(){
+      addModal.style.display = "flex"                     // здесь происходит открытие с той же логикой
+    }
+
+    closeModalButt.addEventListener("click", closeModal)
+    openModalButt.addEventListener("click", openModal)
+
     const container = document.getElementById("container")
 
     function renderBooks() {   //задаём форму массива в HTML и перезаписываем массив после добовления
@@ -70,6 +90,7 @@ const books = [
       books.splice(bookIndex, 1)
 
       renderBooks()
+      saveToLocalStorage()
     }
 
 const buttonAdd = document.getElementById("addBook")
@@ -90,9 +111,16 @@ const buttonAdd = document.getElementById("addBook")
       books.push(book) 
       renderBooks()
       clearForm()
+      closeModal()
+      saveToLocalStorage()
     }
 
     buttonAdd.addEventListener("click", addBook)
+
+    const booksJson = localStorage.getItem("books")  // передаём из локального хранилища браузера сохранёную информацию
+    if(booksJson) {
+      books = JSON.parse(booksJson)
+    }
 
     renderBooks()
     
