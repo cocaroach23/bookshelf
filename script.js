@@ -72,6 +72,8 @@ const books = [
       renderBooks()
     }
 
+const buttonAdd = document.getElementById("addBook")
+
     function addBook() {      // добавляем в массив новые элементы
       const titleValue = document.getElementById("title").value
       const authorsValue = document.getElementById("authors").value
@@ -89,6 +91,8 @@ const books = [
       renderBooks()
       clearForm()
     }
+
+    buttonAdd.addEventListener("click", addBook)
 
     renderBooks()
     
