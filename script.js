@@ -117,9 +117,9 @@ const buttonAdd = document.getElementById("addBook")
 
     buttonAdd.addEventListener("click", addBook)
 
-    const booksJson = localStorage.getItem("books")  // передаём из локального хранилища браузера сохранёную информацию
+    let booksJson = localStorage.getItem("books")  // передаём из локального хранилища браузера сохранёную информацию
     if(booksJson) {
-      books = JSON.parse(booksJson)
+      let books = JSON.parse(booksJson)
     }
 
     renderBooks()
