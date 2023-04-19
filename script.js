@@ -34,6 +34,7 @@ const books = [
     ]
 
     const addModal = document.getElementById("add-modal")
+    //const changeModal = document.getElementById("change-modal")
     const closeModalButt = document.getElementById("close-modal-butt")
     const openModalButt = document.getElementById("open-modal-butt")
 
@@ -50,6 +51,15 @@ const books = [
       addModal.style.display = "flex"                     // здесь происходит открытие с той же логикой
     }
 
+    // function closeChangeModal(){
+    //   changeModal.style.display = "none"
+    // }
+
+    // function openChangeModal(){
+    //   changeModal.style.display = "flex"
+    // }
+    
+
     closeModalButt.addEventListener("click", closeModal)
     openModalButt.addEventListener("click", openModal)
 
@@ -65,7 +75,7 @@ const books = [
                       <p class="card_title">${book.title}</p>
                       <p class="card_authors">${book.authors}</p>
                       <p class="card_year">${book.year}</p>
-                      <button class="butt" onclick="changeBook()">Изменить</button>
+                      <button class="butt" onclick="buttChange(${book.id})">Изменить</button>
                       <button class="butt" onclick="deleteBook(${book.id})">Удалить</button>
                     </div>
               </div>
@@ -81,8 +91,8 @@ const books = [
     }
 
     function deleteBook(id) {   // функционал кнопки Удалить
-      const book = books.find(function(studID){
-        return studID.id === id
+      const book = books.find(function(bookID){
+        return bookID.id === id
       })
 
       const bookIndex = books.indexOf(book)
@@ -115,9 +125,28 @@ const buttonAdd = document.getElementById("addBook")
       saveToLocalStorage()
     }
 
+const buttChange = document.getElementById("changeBook")
+
+    function changeBook(id) {                             // изменение карточки
+      const book = books.find(function(bookID){
+        return bookID.id === id
+      })
+
+      
+      const bookIndex = books.indexOf(book)
+
+      book.setAttribute()
+
+      
+
+      
+    }
+
+    
+    //buttChange.addEventListener("click", changeBook)
     buttonAdd.addEventListener("click", addBook)
 
-    let booksJson = localStorage.getItem("books")  // передаём из локального хранилища браузера сохранёную информацию
+    const booksJson = localStorage.getItem("books")  // передаём из локального хранилища браузера сохранёную информацию
     if(booksJson) {
       let books = JSON.parse(booksJson)
     }
