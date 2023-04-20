@@ -1,4 +1,4 @@
-const books = [
+let books = [
     {
       id: 1,
       title: 'Design Patterns: Elements of Reusable Object-Oriented Software',
@@ -34,7 +34,8 @@ const books = [
     ]
 
     const addModal = document.getElementById("add-modal")
-    //const changeModal = document.getElementById("change-modal")
+    const changeModal = document.getElementById("change-modal")         // модальное окно изменения
+    const closeModalButtChange = document.getElementById("close-change-butt")
     const closeModalButt = document.getElementById("close-modal-butt")
     const openModalButt = document.getElementById("open-modal-butt")
 
@@ -51,15 +52,16 @@ const books = [
       addModal.style.display = "flex"                     // здесь происходит открытие с той же логикой
     }
 
-    // function closeChangeModal(){
-    //   changeModal.style.display = "none"
-    // }
+    function closeChangeModal(){
+      changeModal.style.display = "none"
+    }
 
-    // function openChangeModal(){
-    //   changeModal.style.display = "flex"
-    // }
+    function openChangeModal(){
+      changeModal.style.display = "flex"
+    }
     
-
+    closeModalButtChange.addEventListener("click", closeChangeModal)
+    openModalButt.addEventListener("click", openChangeModal)
     closeModalButt.addEventListener("click", closeModal)
     openModalButt.addEventListener("click", openModal)
 
@@ -69,7 +71,7 @@ const books = [
       container.innerHTML = ""
         books.forEach(function(book) {
             container.innerHTML += `
-              <div class="user_container">
+              <div class="book_container">
                   <img class="img_book" src="${book.image}" alt="">
                     <div class="card_items">
                       <p class="card_title">${book.title}</p>
@@ -125,30 +127,38 @@ const buttonAdd = document.getElementById("addBook")
       saveToLocalStorage()
     }
 
-const buttChange = document.getElementById("changeBook")
+//const buttChange = document.getElementById("change-modal")
 
-    function changeBook(id) {                             // изменение карточки
-      const book = books.find(function(bookID){
-        return bookID.id === id
+    function buttChange(id) {                             // вызов изменения карточки
+      const book = books.find(function(changeID){
+        return changeID.id === id
       })
-
       
       const bookIndex = books.indexOf(book)
-
-      book.setAttribute()
-
+      document.getElementById("title").value = book.title
+      document.getElementById("authors").value = book.authorce
+      document.getElementById("year").value = book.year
+      document.getElementById("image").value = book.image
       
-
-      
+      openChangeModal()
+      bookArray()   
     }
 
+    // const bookList = document.getElementsByClassName("book_container")
+    // const bookArray = Array.from(bookList)
+    // bookArray.forEach(function(change){
+    //   document.getElementById("title").value = "book.title"
+    //   document.getElementById("authors").value
+    //   document.getElementById("year").value
+    //   document.getElementById("image").value
+    //   })
     
     //buttChange.addEventListener("click", changeBook)
     buttonAdd.addEventListener("click", addBook)
 
     const booksJson = localStorage.getItem("books")  // передаём из локального хранилища браузера сохранёную информацию
     if(booksJson) {
-      let books = JSON.parse(booksJson)
+      books = JSON.parse(booksJson)
     }
 
     renderBooks()
