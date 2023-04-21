@@ -77,7 +77,7 @@ let books = [
                       <p class="card_title">${book.title}</p>
                       <p class="card_authors">${book.authors}</p>
                       <p class="card_year">${book.year}</p>
-                      <button class="butt" onclick="buttChange(${book.id})">Изменить</button>
+                      <button class="butt" onclick="openChangeCard(${book.id})">Изменить</button>
                       <button class="butt" onclick="deleteBook(${book.id})">Удалить</button>
                     </div>
               </div>
@@ -105,9 +105,9 @@ let books = [
       saveToLocalStorage()
     }
 
-const buttonAdd = document.getElementById("addBook")
+const buttonAdd = document.getElementById("openChangeCard")
 
-    function addBook() {      // добавляем в массив новые элементы
+    function addBook() {                                                    // добавляем в массив новые элементы
       const titleValue = document.getElementById("title").value
       const authorsValue = document.getElementById("authors").value
       const yearValue = document.getElementById("year").value
@@ -127,21 +127,46 @@ const buttonAdd = document.getElementById("addBook")
       saveToLocalStorage()
     }
 
-//const buttChange = document.getElementById("change-modal")
+const buttChange = document.getElementById("addBookChange")
+let idBook
 
-    function buttChange(id) {                             // вызов изменения карточки
+function changeBook() {                                                   // изменяем в массив новые элементы
+  const titleValue = document.getElementById("title-change").value
+  const authorsValue = document.getElementById("authors-change").value
+  const yearValue = document.getElementById("year-change").value
+  const imageValue = document.getElementById("image-change").value
+  
+  const book = {
+    title: titleValue,
+    authors: authorsValue,
+    year: yearValue,
+    image: imageValue,
+    id: idBook
+  }
+  console.log(book)
+  books.splice(book, 4 , "titleValue", "authorceValue", "yearValue", "imageValue" ) 
+  renderBooks()
+  clearForm()
+  closeModal()
+  saveToLocalStorage()
+}
+
+    function openChangeCard(id) {                             // вызов изменения карточки
       const book = books.find(function(changeID){
         return changeID.id === id
       })
+      idBook = id
       
       const bookIndex = books.indexOf(book)
-      document.getElementById("title").value = book.title
-      document.getElementById("authors").value = book.authorce
-      document.getElementById("year").value = book.year
-      document.getElementById("image").value = book.image
+      document.getElementById("title-change").value = book.title
+      document.getElementById("authors-change").value = book.authorce
+      document.getElementById("year-change").value = book.year
+      document.getElementById("image-change").value = book.image
+      
       
       openChangeModal()
-      bookArray()   
+      
+      
     }
 
     // const bookList = document.getElementsByClassName("book_container")
@@ -153,7 +178,7 @@ const buttonAdd = document.getElementById("addBook")
     //   document.getElementById("image").value
     //   })
     
-    //buttChange.addEventListener("click", changeBook)
+    buttChange.addEventListener("click", openChangeCard)
     buttonAdd.addEventListener("click", addBook)
 
     const booksJson = localStorage.getItem("books")  // передаём из локального хранилища браузера сохранёную информацию
