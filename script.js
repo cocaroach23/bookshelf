@@ -131,19 +131,19 @@ const buttChange = document.getElementById("addBookChange")
 let idBook
 
 function changeBook() {                                                   // изменяем в массивe элементы
-  const titleValue = document.getElementById("title-change").value
-  const authorsValue = document.getElementById("authors-change").value
-  const yearValue = document.getElementById("year-change").value
-  const imageValue = document.getElementById("image-change").value
+  const titleValueChange = document.getElementById("title-change").value
+  const authorsValueChange = document.getElementById("authors-change").value
+  const yearValueChange = document.getElementById("year-change").value
+  const imageValueChange = document.getElementById("image-change").value
   
   const book = {
-    title: titleValue,
-    authors: authorsValue,
-    year: yearValue,
-    image: imageValue,
+    title: titleValueChange,
+    authors: authorsValueChange,
+    year: yearValueChange,
+    image: imageValueChange,
     id: idBook
   }
-  
+  openChangeCard()
   books.splice(book) 
   //renderBooks()
   clearForm()
