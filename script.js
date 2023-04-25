@@ -105,7 +105,7 @@ let books = [
       saveToLocalStorage()
     }
 
-const buttonAdd = document.getElementById("openChangeCard")
+const buttonAdd = document.getElementById("addBook")
 
     function addBook() {                                                    // добавляем в массив новые элементы
       const titleValue = document.getElementById("title").value
@@ -130,7 +130,7 @@ const buttonAdd = document.getElementById("openChangeCard")
 const buttChange = document.getElementById("addBookChange")
 let idBook
 
-function changeBook() {                                                   // изменяем в массив новые элементы
+function changeBook() {                                                   // изменяем в массивe элементы
   const titleValue = document.getElementById("title-change").value
   const authorsValue = document.getElementById("authors-change").value
   const yearValue = document.getElementById("year-change").value
@@ -143,9 +143,9 @@ function changeBook() {                                                   // и�
     image: imageValue,
     id: idBook
   }
-  console.log(book)
-  books.splice(book, 4 , "titleValue", "authorceValue", "yearValue", "imageValue" ) 
-  renderBooks()
+  
+  books.splice(book) 
+  //renderBooks()
   clearForm()
   closeModal()
   saveToLocalStorage()
@@ -163,21 +163,14 @@ function changeBook() {                                                   // и�
       document.getElementById("year-change").value = book.year
       document.getElementById("image-change").value = book.image
       
-      
+      //changeBook()
       openChangeModal()
-      
+      //changeBook()
+      //saveToLocalStorage()
       
     }
 
-    // const bookList = document.getElementsByClassName("book_container")
-    // const bookArray = Array.from(bookList)
-    // bookArray.forEach(function(change){
-    //   document.getElementById("title").value = "book.title"
-    //   document.getElementById("authors").value
-    //   document.getElementById("year").value
-    //   document.getElementById("image").value
-    //   })
-    
+       
     buttChange.addEventListener("click", openChangeCard)
     buttonAdd.addEventListener("click", addBook)
 
