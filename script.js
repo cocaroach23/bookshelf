@@ -61,7 +61,7 @@ let books = [
     }
     
     closeModalButtChange.addEventListener("click", closeChangeModal)
-    openModalButt.addEventListener("click", openChangeModal)
+    //openModalButt.addEventListener("click", openChangeModal)
     closeModalButt.addEventListener("click", closeModal)
     openModalButt.addEventListener("click", openModal)
 
@@ -129,6 +129,7 @@ const buttonAdd = document.getElementById("addBook")
 
 const buttChange = document.getElementById("addBookChange")
 let idBook
+let bookIndex
 
 function changeBook() {                                                   // изменяем в массивe элементы
   const titleValueChange = document.getElementById("title-change").value
@@ -143,11 +144,13 @@ function changeBook() {                                                   // и�
     image: imageValueChange,
     id: idBook
   }
-  openChangeCard()
-  books.splice(book) 
-  //renderBooks()
+
+  
+  
+  books.splice(bookIndex, 1, book) 
+  renderBooks()
   clearForm()
-  closeModal()
+  closeChangeModal()
   saveToLocalStorage()
 }
 
@@ -156,22 +159,21 @@ function changeBook() {                                                   // и�
         return changeID.id === id
       })
       idBook = id
+      bookIndex = books.indexOf(book)
       
-      const bookIndex = books.indexOf(book)
       document.getElementById("title-change").value = book.title
-      document.getElementById("authors-change").value = book.authorce
+      document.getElementById("authors-change").value = book.authors
       document.getElementById("year-change").value = book.year
       document.getElementById("image-change").value = book.image
       
-      //changeBook()
+      
       openChangeModal()
-      //changeBook()
-      //saveToLocalStorage()
+      
       
     }
 
        
-    buttChange.addEventListener("click", openChangeCard)
+    buttChange.addEventListener("click", changeBook)
     buttonAdd.addEventListener("click", addBook)
 
     const booksJson = localStorage.getItem("books")  // передаём из локального хранилища браузера сохранёную информацию
