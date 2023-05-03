@@ -112,7 +112,7 @@ const buttonAdd = document.getElementById("addBook")
       const authorsValue = document.getElementById("authors").value
       const yearValue = document.getElementById("year").value
       const imageValue = document.getElementById("image").value
-      
+      //
       const book = {
         title: titleValue,
         authors: authorsValue,
