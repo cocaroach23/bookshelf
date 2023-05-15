@@ -113,13 +113,24 @@ const buttonAdd = document.getElementById("addBook")
       const yearValue = document.getElementById("year").value
       const imageValue = document.getElementById("image").value
       //
+
+      function newID(id) {
+        this.created = new id;
+      
+        newID.count++; 
+        newID.last = this.created; 
+      }      
+      
       const book = {
+        
         title: titleValue,
         authors: authorsValue,
         year: yearValue,
-        image: imageValue
+        image: imageValue,
+        id: newID
       }
-
+      
+      
       books.push(book) 
       renderBooks()
       clearForm()
