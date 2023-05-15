@@ -1,20 +1,22 @@
+let count = 0
+
 let books = [
     {
-      id: 1,
+      id: count++,
       title: 'Design Patterns: Elements of Reusable Object-Oriented Software',
       authors: 'Erich Gamma, John Vlissides, Ralph Johnson, Richard Helm',
       year: '1994',
       image: 'https://images-na.ssl-images-amazon.com/images/I/81gtKoapHFL.jpg'
     },
     {
-      id: 2,
+      id: count++,
       title: 'JavaScript: The Good Parts',
       authors: 'Douglas Crockford',
       year: '2008',
       image: 'https://images-na.ssl-images-amazon.com/images/I/81kqrwS1nNL.jpg'
     },
     {
-      id: 3,
+      id: count++,
       title:
       'JavaScript Patterns: Build Better Applications with Coding and Design Patterns',
       authors: 'Stoyan Stefanov',
@@ -23,7 +25,7 @@ let books = [
       'https://images-na.ssl-images-amazon.com/images/I/51%2BSiphz7AL._SX377_BO1,204,203,200_.jpg'
     },
     {
-      id: 4,
+      id: count++,
       title:
       'JavaScript: The Definitive Guide: Activate Your Web Pages (Definitive Guides)',
       authors: 'David Flanagan',
@@ -114,20 +116,20 @@ const buttonAdd = document.getElementById("addBook")
       const imageValue = document.getElementById("image").value
       //
 
-      function newID(id) {
+      /*function newID(id) {
         this.created = new id;
       
         newID.count++; 
         newID.last = this.created; 
-      }      
+      }*/      
       
       const book = {
-        
+        id: count++,
         title: titleValue,
         authors: authorsValue,
         year: yearValue,
         image: imageValue,
-        id: newID
+        
       }
       
       
